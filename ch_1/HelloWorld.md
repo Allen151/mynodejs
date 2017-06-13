@@ -4,7 +4,7 @@
 
 ## 第一步，安装Node.js  
 我们可以直接到[Node.js官网]进行下载，Node.js的版本更新得太快了，最好还是到官网下载最新的版本。  
-![](images/nodejs.png "版本的选择")
+![官网](../images/nodejs.png "版本的选择")
 
 
 <!--超链接-->
