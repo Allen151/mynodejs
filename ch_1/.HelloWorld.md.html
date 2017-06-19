@@ -646,11 +646,16 @@ function setDocumentScrollTop(ypos)
  <li> <p>我们可以直接到<a href="https://nodejs.org/en/">Node.js官网</a>进行下载，Node.js的版本更新得太快了，最好还是到官网下载最新的版本。左边的LTS版本是稳定版本，我们一般使用这个。右边的Current是测试版，有时候也用到，因为我们是初学者，那就用左边的吧！！。<br /> <a href="../images/nodejs.png" target="_blank"><img src="../images/nodejs.png" alt="官网" title="版本的选择" style="max-width:100%;" /></a></p> </li> 
  <li> <p>安装软件，直接打开安装包，全程下一步就行了，我们也没必要改安装路径了。</p> </li> 
  <li> <p>测试是否安装成功，运行命令窗口，输入如下指令。 如果结果一样就说明安装成功。 <a href="../images/1.png" target="_blank"><img src="../images/1.png" alt="测试" title="版本号" style="max-width:100%;" /></a></p> </li> 
- <li> <p>在以盘找到node.js的安装路径。创建hello.js文件，如下图：<br /> <a href="../images/2.png" target="_blank"><img src="../images/2.png" alt="创建文件" title="hello" style="max-width:100%;" /></a></p> </li> 
+ <li> <p>在c盘找到node.js的安装路径。创建hello.js文件，如下图：<br /> <a href="../images/2.png" target="_blank"><img src="../images/2.png" alt="创建文件" title="hello" style="max-width:100%;" /></a></p> </li> 
  <li> <p>hello.js文件里的代码如下：保存好代码。</p> 
   <div class="highlight highlight-source-js">
-   <pre><span class="pl-k">var</span> http <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">&quot;</span>http<span class="pl-pds">&quot;</span></span>) ; 
+   <pre><span class="pl-k">var</span> http <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">&quot;</span>http<span class="pl-pds">&quot;</span></span>) ; <span class="pl-c"><span class="pl-c">//</span>使用require指令来载入http模块</span>
 <span class="pl-smi">http</span>.<span class="pl-en">createServer</span>(<span class="pl-k">function</span>(<span class="pl-smi">req</span>,<span class="pl-smi">res</span>){
+	<span class="pl-c">/*此行代码说明</span>
+<span class="pl-c">  发送Head头部</span>
+<span class="pl-c">  HTTP状态值：200：OK</span>
+<span class="pl-c">  内容类型：text/plain</span>
+<span class="pl-c">   */</span>
   <span class="pl-smi">res</span>.<span class="pl-en">writeHead</span>(<span class="pl-c1">200</span>,{<span class="pl-s"><span class="pl-pds">'</span>Content-Type<span class="pl-pds">'</span></span><span class="pl-k">:</span><span class="pl-s"><span class="pl-pds">'</span>text/plain<span class="pl-pds">'</span></span>});
   <span class="pl-smi">res</span>.<span class="pl-en">end</span>(<span class="pl-s"><span class="pl-pds">'</span>Hello World<span class="pl-cce">\n</span><span class="pl-pds">'</span></span>);
 }).<span class="pl-en">listen</span>(<span class="pl-c1">1337</span>,<span class="pl-s"><span class="pl-pds">'</span>127.0.0.1<span class="pl-pds">'</span></span>);
@@ -664,6 +669,7 @@ function setDocumentScrollTop(ypos)
  <li>我们学会了安装Node.js</li> 
  <li>我们运行了第一个程序</li> 
  <li>坚持学下去哦！！</li> 
+ <li>我们调用 http 模块提供的函数： createServer 。这个函数会返回 一个对象，这个对象有一个叫做 listen 的方法，这个方法有一个数值参数， 指定这个 HTTP 服务器监听的端口号。</li> 
 </ul>
 </body>
 </html>
