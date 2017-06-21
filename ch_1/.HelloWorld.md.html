@@ -664,7 +664,7 @@ function setDocumentScrollTop(ypos)
  <li> <p>在hello.js文件的目录下打开命令窗口（因为还没配置环境变量），执行<code>node hello.js</code>命令，结果如下图： <a href="../images/3.png" target="_blank"><img src="../images/3.png" alt="打开服务" title="打开服务" style="max-width:100%;" /></a></p> </li> 
  <li> <p>不要关闭命令窗口，在浏览器网站栏输入：<a href="http://127.0.0.1:1337/">http://127.0.0.1:1337/</a> ，你将看到你的第一个node.js代码的hello world!!</p> <p><a href="../images/4.png" target="_blank"><img src="../images/4.png" alt="hello" title="开启nodejs了" style="max-width:100%;" /></a></p> </li> 
 </ul> 
-<p><strong>我们来讲解一下代码</strong><br /> 如果你细心观察浏览器的窗口，就会发现127前那个小圆圈在转个不停。意思就是说网页还在加载。加载一段时间后就卡住了。然后再刷新就报错，因为之前的还在加载。这个应该怎么描述我还不懂。我们来解释一下为什么为这样吧。<br /> <code>http.createServer(function(req,res){</code>这行代码是用<code>http</code>模块创建一个服务，<code>}).listen(1337,'127.0.0.1');</code>这个的意思是说这个服务对这个端口监听和锁定这个<code>ip</code>，服务里面的代码呢就是<code>res.writeHead(200,{'Content-Type':'text/plain; charset=utf-8'});</code>这行代码是响应的一些头信息，<code>res.write('Hello World\n');</code>最后在文档中写下<code>Hello World</code>。我们写出内容后面加上个<code>res.end(&quot;结束&quot;);</code>请求结束。这时候就不会不停地加载了。<br /> 我们在写内容之前加上个<code>console.log(&quot;访问成功&quot;);</code>在后台输出提示得到请求。重新运行，刷新，发现后台有两次访问，这不是我们预期的效果。为什么会这样呢，是因为访问一次之后又回头访问。有什么办法解决呢。下面是完整的代码。</p> 
+<p><strong>我们来讲解一下代码</strong><br /> 如果你细心观察浏览器的窗口，就会发现127前那个小圆圈在转个不停。意思就是说网页还在加载。加载一段时间后就卡住了。然后再刷新就报错，因为之前的还在加载。这个应该怎么描述我还不懂。我们来解释一下为什么为这样吧。<br /> <code>http.createServer(function(req,res){</code>这行代码是用<code>http</code>模块创建一个服务，<code>}).listen(1337,'127.0.0.1');</code>这个的意思是说这个服务对这个端口监听和锁定这个<code>ip</code>，服务里面的代码呢就是<code>res.writeHead(200,{'Content-Type':'text/plain; charset=utf-8'});</code>这行代码是响应的一些头信息，<code>res.write('Hello World\n');</code>最后在文档中写下<code>Hello World</code>。我们写出内容后面加上个<code>res.end(&quot;结束&quot;);</code>请求结束。这时候就不会不停地加载了。<br /> 我们在写内容之前加上个<code>console.log(&quot;访问成功&quot;);</code>在后台输出提示得到请求。重新运行，刷新，发现后台有两次访问，这不是我们预期的效果。为什么会这样呢，是因为访问一次之后又回头访问。有什么办法解决呢。下面是完整的代码。<br /> 消除第二次访问，也有结束部分。</p> 
 <div class="highlight highlight-source-js">
  <pre><span class="pl-k">var</span> http <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">&quot;</span>http<span class="pl-pds">&quot;</span></span>) ; <span class="pl-c"><span class="pl-c">//</span>使用require指令来载入http模块</span>
 <span class="pl-smi">http</span>.<span class="pl-en">createServer</span>(<span class="pl-k">function</span>(<span class="pl-smi">req</span>,<span class="pl-smi">res</span>){
@@ -688,6 +688,21 @@ function setDocumentScrollTop(ypos)
  <li>我们运行了第一个程序</li> 
  <li>坚持学下去哦！！</li> 
  <li>我们调用 http 模块提供的函数： createServer 。这个函数会返回 一个对象，这个对象有一个叫做 listen 的方法，这个方法有一个数值参数， 指定这个 HTTP 服务器监听的端口号。</li> 
-</ul>
+</ul> 
+<p>node.js真的很好用，以下这部分代码是搭建服务必须的：</p> 
+<div class="highlight highlight-source-js">
+ <pre><span class="pl-k">var</span> http <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">&quot;</span>http<span class="pl-pds">&quot;</span></span>);
+
+<span class="pl-smi">http</span>.<span class="pl-en">createServer</span>(<span class="pl-k">function</span>(<span class="pl-smi">req</span>,<span class="pl-smi">res</span>){
+	<span class="pl-smi">res</span>.<span class="pl-en">writeHead</span>(<span class="pl-c1">200</span>, {<span class="pl-s"><span class="pl-pds">&quot;</span>Content-Type<span class="pl-pds">&quot;</span></span> <span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">&quot;</span>text/plain; charset=utf-8<span class="pl-pds">&quot;</span></span>});	
+	<span class="pl-k">if</span>(<span class="pl-smi">req</span>.<span class="pl-smi">url</span><span class="pl-k">!==</span><span class="pl-s"><span class="pl-pds">&quot;</span>/favicon.ico<span class="pl-pds">&quot;</span></span>){<span class="pl-c"><span class="pl-c">//</span>如果请求不是***</span>
+		<span class="pl-smi">res</span>.<span class="pl-c1">write</span>(<span class="pl-s"><span class="pl-pds">&quot;</span>必须<span class="pl-pds">&quot;</span></span><span class="pl-k">+</span><span class="pl-s"><span class="pl-pds">&quot;</span><span class="pl-cce">\n</span><span class="pl-pds">&quot;</span></span>);
+		<span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-s"><span class="pl-pds">&quot;</span>告诉后台访问<span class="pl-pds">&quot;</span></span>);
+		<span class="pl-smi">res</span>.<span class="pl-en">end</span>(<span class="pl-s"><span class="pl-pds">&quot;</span>访问结束<span class="pl-pds">&quot;</span></span>);	
+	}
+}).<span class="pl-en">listen</span>(<span class="pl-c1">1337</span>);
+
+<span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-s"><span class="pl-pds">&quot;</span>Server run at http://127.0.0.1:1337<span class="pl-pds">&quot;</span></span>);</pre>
+</div>
 </body>
 </html>

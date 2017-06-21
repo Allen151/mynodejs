@@ -1,0 +1,5 @@
+C:\Users\Administrator>npm adduser
+Username: allen151
+Password:
+Email: (this IS public) 1574165902@qq.com
+Logged in as allen151 on https://registry.npm.taobao.org/.
