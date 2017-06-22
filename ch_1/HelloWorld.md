@@ -60,7 +60,7 @@ console.log('Server running at http://127.0.0.1:1337/');
 - 我们运行了第一个程序  
 - 坚持学下去哦！！
 - 我们调用 http 模块提供的函数： createServer 。这个函数会返回 一个对象，这个对象有一个叫做 listen 的方法，这个方法有一个数值参数， 指定这个 HTTP 服务器监听的端口号。   
-
+## 学习到的新代码  
 node.js真的很好用，以下这部分代码是搭建服务必须的：  
 ```javascript
 var http = require("http");
@@ -75,7 +75,9 @@ http.createServer(function(req,res){
 }).listen(1337);
 
 console.log("Server run at http://127.0.0.1:1337");
-```
+```  
+
+
 
 <!--超链接-->
 [Node.js官网]: https://nodejs.org/en/

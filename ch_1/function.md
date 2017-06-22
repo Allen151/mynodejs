@@ -140,4 +140,34 @@ http.createServer(function(req,res){
 console.log("Server run at http://127.0.0.1:1337");
 ```  
 ### 总结  
-这节我们学习了怎么调用函数，是为以后的学习做准备的。
+这节我们学习了怎么调用函数，是为以后的学习做准备的。  
+
+## 学习到的新代码  
+```javascript
+//小文件抛出接口
+module.exports  =  controller;
+
+//与另一个文件取得连接，括号里的相对路径打好来就行了
+var otherFun = require("./some_fun.js");
+//访问小文件的唯一的方法  
+otherFun(req,res);
+
+//小文件可以抛多个函数，函数间用逗号隔开，函数名可用双引号括起来，可以是任意字符。
+module.exports={
+	getName:function(res){
+		res.write("Hello Allen"+"\n");
+	},
+	getPlay:function(res){
+		res.write("I am a student"+"\n");
+	}
+}
+
+//用点表示方法调用方法
+otherFun.getName(res);
+otherFun.getPlay(res);
+
+
+//用方括号的方法调用非法命名的函数
+otherFun["get Name"](res);
+
+```

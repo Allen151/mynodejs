@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>D:\IT\github\mynodejs\ch_1\.HelloWorld.md.html</title>
+<title>D:\IT\github\mynodejs\markdown\.router.md.html</title>
 
 
 <style type="text/css">
@@ -639,71 +639,56 @@ function setDocumentScrollTop(ypos)
 
 </head>
 <body class="markdown-body">
-<h1> <a id="hello-world" class="anchor" href="#hello-world" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Hello World!</h1> 
-<p><strong>想不想让自己的JS代码运行在Node.js的服务器上呢？？？</strong><br /> Node.js这两年来很火哦，我们要不要一起来学习呢？？？虽然有点迟了，但是我们努力学，一定也是会有收获的，你说呢？？</p> 
-<h2> <a id="第一步安装nodejs" class="anchor" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%E5%AE%89%E8%A3%85nodejs" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>第一步，安装Node.js</h2> 
+<h1> <a id="路由" class="anchor" href="#%E8%B7%AF%E7%94%B1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>路由</h1> 
+<p>在这里，我们需要了解一下什么是路由，跟我们平时所说的路由器是不同的。<br /> 我们访问一个地址是，网址是这样的，例如我们前面说过的：<code>http://127.0.0.1:1337/</code>，这应该叫网页的路径，而有时候我们点击连接后面就多了些东西出来，<code>http://127.0.0.1:1337/login</code>之类的。路由的操作过程就是：在JS中，我们通过得到后面的<code>login</code>来访问<code>login</code>方法。具体路由是个什么概念我也说不清楚，我们应该看一下百科，我还没有时间去看，我先把学到的东西记录下来吧。</p> 
 <ul> 
- <li> <p>我们可以直接到<a href="https://nodejs.org/en/">Node.js官网</a>进行下载，Node.js的版本更新得太快了，最好还是到官网下载最新的版本。左边的LTS版本是稳定版本，我们一般使用这个。右边的Current是测试版，有时候也用到，因为我们是初学者，那就用左边的吧！！。<br /> <a href="../images/nodejs.png" target="_blank"><img src="../images/nodejs.png" alt="官网" title="版本的选择" style="max-width:100%;" /></a></p> </li> 
- <li> <p>安装软件，直接打开安装包，全程下一步就行了，我们也没必要改安装路径了。</p> </li> 
- <li> <p>测试是否安装成功，运行命令窗口，输入如下指令。 如果结果一样就说明安装成功。 <a href="../images/1.png" target="_blank"><img src="../images/1.png" alt="测试" title="版本号" style="max-width:100%;" /></a></p> </li> 
- <li> <p>在c盘找到node.js的安装路径。创建hello.js文件，如下图：<br /> <a href="../images/2.png" target="_blank"><img src="../images/2.png" alt="创建文件" title="hello" style="max-width:100%;" /></a></p> </li> 
- <li> <p>hello.js文件里的代码如下：保存好代码。</p> 
-  <div class="highlight highlight-source-js">
-   <pre><span class="pl-k">var</span> http <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">&quot;</span>http<span class="pl-pds">&quot;</span></span>) ; <span class="pl-c"><span class="pl-c">//</span>使用require指令来载入http模块</span>
-<span class="pl-smi">http</span>.<span class="pl-en">createServer</span>(<span class="pl-k">function</span>(<span class="pl-smi">req</span>,<span class="pl-smi">res</span>){
-	<span class="pl-c">/*此行代码说明</span>
-<span class="pl-c">  发送Head头部</span>
-<span class="pl-c">  HTTP状态值：200：OK</span>
-<span class="pl-c">  内容类型：text/plain</span>
-<span class="pl-c">   */</span>
-  <span class="pl-smi">res</span>.<span class="pl-en">writeHead</span>(<span class="pl-c1">200</span>,{<span class="pl-s"><span class="pl-pds">'</span>Content-Type<span class="pl-pds">'</span></span><span class="pl-k">:</span><span class="pl-s"><span class="pl-pds">'</span>text/plain<span class="pl-pds">'</span></span>});
-  <span class="pl-smi">res</span>.<span class="pl-c1">write</span>(<span class="pl-s"><span class="pl-pds">'</span>Hello World<span class="pl-cce">\n</span><span class="pl-pds">'</span></span>);
-}).<span class="pl-en">listen</span>(<span class="pl-c1">1337</span>,<span class="pl-s"><span class="pl-pds">'</span>127.0.0.1<span class="pl-pds">'</span></span>);
-<span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-s"><span class="pl-pds">'</span>Server running at http://127.0.0.1:1337/<span class="pl-pds">'</span></span>);</pre>
-  </div> </li> 
- <li> <p>在hello.js文件的目录下打开命令窗口（因为还没配置环境变量），执行<code>node hello.js</code>命令，结果如下图： <a href="../images/3.png" target="_blank"><img src="../images/3.png" alt="打开服务" title="打开服务" style="max-width:100%;" /></a></p> </li> 
- <li> <p>不要关闭命令窗口，在浏览器网站栏输入：<a href="http://127.0.0.1:1337/">http://127.0.0.1:1337/</a> ，你将看到你的第一个node.js代码的hello world!!</p> <p><a href="../images/4.png" target="_blank"><img src="../images/4.png" alt="hello" title="开启nodejs了" style="max-width:100%;" /></a></p> </li> 
+ <li> <code>url</code>是<code>node.js</code>内置的一个模块。我们获取地址栏输入的路由地址，然后通过正则法除掉反斜杠，在后台输出，这时候我们访问网址的时候，在后面添加的字符串就台在后台输出。</li> 
 </ul> 
-<p><strong>我们来讲解一下代码</strong><br /> 如果你细心观察浏览器的窗口，就会发现127前那个小圆圈在转个不停。意思就是说网页还在加载。加载一段时间后就卡住了。然后再刷新就报错，因为之前的还在加载。这个应该怎么描述我还不懂。我们来解释一下为什么为这样吧。<br /> <code>http.createServer(function(req,res){</code>这行代码是用<code>http</code>模块创建一个服务，<code>}).listen(1337,'127.0.0.1');</code>这个的意思是说这个服务对这个端口监听和锁定这个<code>ip</code>，服务里面的代码呢就是<code>res.writeHead(200,{'Content-Type':'text/plain; charset=utf-8'});</code>这行代码是响应的一些头信息，<code>res.write('Hello World\n');</code>最后在文档中写下<code>Hello World</code>。我们写出内容后面加上个<code>res.end(&quot;结束&quot;);</code>请求结束。这时候就不会不停地加载了。<br /> 我们在写内容之前加上个<code>console.log(&quot;访问成功&quot;);</code>在后台输出提示得到请求。重新运行，刷新，发现后台有两次访问，这不是我们预期的效果。为什么会这样呢，是因为访问一次之后又回头访问。有什么办法解决呢。下面是完整的代码。<br /> 消除第二次访问，也有结束部分。</p> 
 <div class="highlight highlight-source-js">
- <pre><span class="pl-k">var</span> http <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">&quot;</span>http<span class="pl-pds">&quot;</span></span>) ; <span class="pl-c"><span class="pl-c">//</span>使用require指令来载入http模块</span>
-<span class="pl-smi">http</span>.<span class="pl-en">createServer</span>(<span class="pl-k">function</span>(<span class="pl-smi">req</span>,<span class="pl-smi">res</span>){
-	<span class="pl-c">/*此行代码说明</span>
-<span class="pl-c">  发送Head头部</span>
-<span class="pl-c">  HTTP状态值：200：OK</span>
-<span class="pl-c">  内容类型：text/plain</span>
-<span class="pl-c">   */</span>
-  	<span class="pl-smi">res</span>.<span class="pl-en">writeHead</span>(<span class="pl-c1">200</span>,{<span class="pl-s"><span class="pl-pds">'</span>Content-Type<span class="pl-pds">'</span></span><span class="pl-k">:</span><span class="pl-s"><span class="pl-pds">'</span>text/plain; charset=utf-8<span class="pl-pds">'</span></span>});
-  	<span class="pl-k">if</span>(<span class="pl-smi">req</span>.<span class="pl-smi">url</span><span class="pl-k">!==</span><span class="pl-s"><span class="pl-pds">&quot;</span>/favicon.ico<span class="pl-pds">&quot;</span></span>){  <span class="pl-c"><span class="pl-c">//</span>清除第2此访问  </span>
-	  	<span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-s"><span class="pl-pds">&quot;</span>访问成功<span class="pl-pds">&quot;</span></span>);
-		<span class="pl-smi">res</span>.<span class="pl-c1">write</span>(<span class="pl-s"><span class="pl-pds">'</span>Hello World<span class="pl-cce">\n</span><span class="pl-pds">'</span></span>);
-		<span class="pl-smi">res</span>.<span class="pl-en">end</span>(<span class="pl-s"><span class="pl-pds">&quot;</span>结束<span class="pl-pds">&quot;</span></span>);
-	}
-}).<span class="pl-en">listen</span>(<span class="pl-c1">1337</span>,<span class="pl-s"><span class="pl-pds">'</span>127.0.0.1<span class="pl-pds">'</span></span>);
-<span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-s"><span class="pl-pds">'</span>Server running at http://127.0.0.1:1337/<span class="pl-pds">'</span></span>);</pre>
+ <pre><span class="pl-c"><span class="pl-c">//</span>node.js里内置的一个模块</span>
+<span class="pl-k">var</span> url <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">&quot;</span>url<span class="pl-pds">&quot;</span></span>);
+
+	<span class="pl-k">var</span> pathName <span class="pl-k">=</span> <span class="pl-smi">url</span>.<span class="pl-c1">parse</span>(<span class="pl-smi">req</span>.<span class="pl-smi">url</span>).<span class="pl-c1">pathname</span>;<span class="pl-c"><span class="pl-c">//</span>路由地址</span>
+		
+	<span class="pl-c"><span class="pl-c">//</span>通过正则法删除斜线</span>
+	pathName <span class="pl-k">=</span> <span class="pl-smi">pathName</span>.<span class="pl-c1">replace</span>(<span class="pl-sr"><span class="pl-pds">/</span><span class="pl-cce">\/</span><span class="pl-pds">/</span></span>, <span class="pl-s"><span class="pl-pds">&quot;</span><span class="pl-pds">&quot;</span></span>);
+
+	<span class="pl-en">console</span>.<span class="pl-c1">log</span>(pathName);</pre>
 </div> 
-<h2> <a id="总结" class="anchor" href="#%E6%80%BB%E7%BB%93" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>总结：</h2> 
 <ul> 
- <li>我们学会了安装Node.js</li> 
- <li>我们运行了第一个程序</li> 
- <li>坚持学下去哦！！</li> 
- <li>我们调用 http 模块提供的函数： createServer 。这个函数会返回 一个对象，这个对象有一个叫做 listen 的方法，这个方法有一个数值参数， 指定这个 HTTP 服务器监听的端口号。</li> 
+ <li>上一节我们学习过，调用另一个文件的多个函数，这里我们又要用到这个知识点啦，开不开心？重温一下：</li> 
 </ul> 
-<h2> <a id="学习到的新代码" class="anchor" href="#%E5%AD%A6%E4%B9%A0%E5%88%B0%E7%9A%84%E6%96%B0%E4%BB%A3%E7%A0%81" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>学习到的新代码</h2> 
-<p>node.js真的很好用，以下这部分代码是搭建服务必须的：</p> 
 <div class="highlight highlight-source-js">
- <pre><span class="pl-k">var</span> http <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">&quot;</span>http<span class="pl-pds">&quot;</span></span>);
-
-<span class="pl-smi">http</span>.<span class="pl-en">createServer</span>(<span class="pl-k">function</span>(<span class="pl-smi">req</span>,<span class="pl-smi">res</span>){
-	<span class="pl-smi">res</span>.<span class="pl-en">writeHead</span>(<span class="pl-c1">200</span>, {<span class="pl-s"><span class="pl-pds">&quot;</span>Content-Type<span class="pl-pds">&quot;</span></span> <span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">&quot;</span>text/plain; charset=utf-8<span class="pl-pds">&quot;</span></span>});	
-	<span class="pl-k">if</span>(<span class="pl-smi">req</span>.<span class="pl-smi">url</span><span class="pl-k">!==</span><span class="pl-s"><span class="pl-pds">&quot;</span>/favicon.ico<span class="pl-pds">&quot;</span></span>){<span class="pl-c"><span class="pl-c">//</span>如果请求不是***</span>
-		<span class="pl-smi">res</span>.<span class="pl-c1">write</span>(<span class="pl-s"><span class="pl-pds">&quot;</span>必须<span class="pl-pds">&quot;</span></span><span class="pl-k">+</span><span class="pl-s"><span class="pl-pds">&quot;</span><span class="pl-cce">\n</span><span class="pl-pds">&quot;</span></span>);
-		<span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-s"><span class="pl-pds">&quot;</span>告诉后台访问<span class="pl-pds">&quot;</span></span>);
-		<span class="pl-smi">res</span>.<span class="pl-en">end</span>(<span class="pl-s"><span class="pl-pds">&quot;</span>访问结束<span class="pl-pds">&quot;</span></span>);	
+ <pre><span class="pl-c1">module</span>.<span class="pl-smi">exports</span> <span class="pl-k">=</span> {
+	<span class="pl-en">login</span><span class="pl-k">:</span><span class="pl-k">function</span>(<span class="pl-smi">res</span>){
+		<span class="pl-smi">res</span>.<span class="pl-c1">write</span>(<span class="pl-s"><span class="pl-pds">&quot;</span>你是不是要登录<span class="pl-cce">\n</span><span class="pl-pds">&quot;</span></span>);
+	},
+	<span class="pl-en">register</span><span class="pl-k">:</span><span class="pl-k">function</span>(<span class="pl-smi">res</span>){
+		<span class="pl-smi">res</span>.<span class="pl-c1">write</span>(<span class="pl-s"><span class="pl-pds">&quot;</span>你是要注册吗？<span class="pl-pds">&quot;</span></span>);
 	}
-}).<span class="pl-en">listen</span>(<span class="pl-c1">1337</span>);
+}</pre>
+</div> 
+<ul> 
+ <li>在运行的文件<code>n4_rout.js</code>文件中的主要代码如下：</li> 
+</ul> 
+<div class="highlight highlight-source-js">
+ <pre><span class="pl-c"><span class="pl-c">//</span>导入另一个文件的模块</span>
+<span class="pl-k">var</span> myFunction <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">&quot;</span>./modules/router.js<span class="pl-pds">&quot;</span></span>);
 
-<span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-s"><span class="pl-pds">&quot;</span>Server run at http://127.0.0.1:1337<span class="pl-pds">&quot;</span></span>);</pre>
+<span class="pl-c"><span class="pl-c">//</span>在这里通过得到的路由名来调用方法</span>
+myFunction[pathName](res);</pre>
+</div> 
+<p>在这里的第一步是取得与另一个文件的关联。还用到了上一节函数调用那一节的知识，通过变量储存函数名，用方括号的方法调用函数。这里变量储存的函数名来源于前面通过地址栏得到的路由，在这里我们访问的网站一定要是：<code>http://127.0.0.1:1337/login</code>或<code>http://127.0.0.1:1337/register</code>。其他的都报错，因为其他的传入的函数名不正确，无法正常调用，就报错，在后面我们将学习到如果进行异常处理。</p> 
+<hr /> 
+<h2> <a id="学习到的新代码" class="anchor" href="#%E5%AD%A6%E4%B9%A0%E5%88%B0%E7%9A%84%E6%96%B0%E4%BB%A3%E7%A0%81" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>学习到的新代码</h2> 
+<div class="highlight highlight-source-js">
+ <pre><span class="pl-c"><span class="pl-c">//</span>node.js里内置的一个模块</span>
+<span class="pl-k">var</span> url <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">&quot;</span>url<span class="pl-pds">&quot;</span></span>);
+
+<span class="pl-k">var</span> pathName <span class="pl-k">=</span> <span class="pl-smi">url</span>.<span class="pl-c1">parse</span>(<span class="pl-smi">req</span>.<span class="pl-smi">url</span>).<span class="pl-c1">pathname</span>;<span class="pl-c"><span class="pl-c">//</span>路由地址</span>
+
+<span class="pl-c"><span class="pl-c">//</span>通过正则法删除斜线</span>
+pathName <span class="pl-k">=</span> <span class="pl-smi">pathName</span>.<span class="pl-c1">replace</span>(<span class="pl-sr"><span class="pl-pds">/</span><span class="pl-cce">\/</span><span class="pl-pds">/</span></span>, <span class="pl-s"><span class="pl-pds">&quot;</span><span class="pl-pds">&quot;</span></span>);</pre>
 </div>
 </body>
 </html>

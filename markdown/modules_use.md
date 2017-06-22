@@ -118,4 +118,28 @@ var Student = require("./modules/Student");
 var student = new Student(1, "小明", 12) ;
 student.enter();
 student.study(res);
+```  
+
+## 学习到的新代码  
+```javascript
+//创建一个对象  
+function User(id, name, age){
+
+}
+//实例化一个对象，调用对象里的方法
+var user = new User(1, "Allen", 20);
+user.enter();
+
+//继承一个父类，得到接口，实用上父类，自己的函数，抛出接口
+var User = require("./User") ;
+function Teacher(id, name, age){
+	//将User应用进来，相当于java中的实现类的继承操作
+	User.apply(this, [id, name, age]);
+	this.teach = function(res){
+		res.write(this.name+"在讲课");
+	}
+}
+module.exports = Teacher ;//抛出接口
+//使用继承类跟使用类一样，不多说。
+
 ```

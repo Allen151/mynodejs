@@ -782,6 +782,35 @@ function setDocumentScrollTop(ypos)
 <span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-s"><span class="pl-pds">&quot;</span>Server run at http://127.0.0.1:1337<span class="pl-pds">&quot;</span></span>);</pre>
 </div> 
 <h3> <a id="总结" class="anchor" href="#%E6%80%BB%E7%BB%93" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>总结</h3> 
-<p>这节我们学习了怎么调用函数，是为以后的学习做准备的。</p>
+<p>这节我们学习了怎么调用函数，是为以后的学习做准备的。</p> 
+<h2> <a id="学习到的新代码" class="anchor" href="#%E5%AD%A6%E4%B9%A0%E5%88%B0%E7%9A%84%E6%96%B0%E4%BB%A3%E7%A0%81" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>学习到的新代码</h2> 
+<div class="highlight highlight-source-js">
+ <pre><span class="pl-c"><span class="pl-c">//</span>小文件抛出接口</span>
+<span class="pl-c1">module</span>.<span class="pl-smi">exports</span>  <span class="pl-k">=</span>  controller;
+
+<span class="pl-c"><span class="pl-c">//</span>与另一个文件取得连接，括号里的相对路径打好来就行了</span>
+<span class="pl-k">var</span> otherFun <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">&quot;</span>./some_fun.js<span class="pl-pds">&quot;</span></span>);
+<span class="pl-c"><span class="pl-c">//</span>访问小文件的唯一的方法  </span>
+<span class="pl-en">otherFun</span>(req,res);
+
+<span class="pl-c"><span class="pl-c">//</span>小文件可以抛多个函数，函数间用逗号隔开，函数名可用双引号括起来，可以是任意字符。</span>
+<span class="pl-c1">module</span>.<span class="pl-smi">exports</span><span class="pl-k">=</span>{
+	<span class="pl-en">getName</span><span class="pl-k">:</span><span class="pl-k">function</span>(<span class="pl-smi">res</span>){
+		<span class="pl-smi">res</span>.<span class="pl-c1">write</span>(<span class="pl-s"><span class="pl-pds">&quot;</span>Hello Allen<span class="pl-pds">&quot;</span></span><span class="pl-k">+</span><span class="pl-s"><span class="pl-pds">&quot;</span><span class="pl-cce">\n</span><span class="pl-pds">&quot;</span></span>);
+	},
+	<span class="pl-en">getPlay</span><span class="pl-k">:</span><span class="pl-k">function</span>(<span class="pl-smi">res</span>){
+		<span class="pl-smi">res</span>.<span class="pl-c1">write</span>(<span class="pl-s"><span class="pl-pds">&quot;</span>I am a student<span class="pl-pds">&quot;</span></span><span class="pl-k">+</span><span class="pl-s"><span class="pl-pds">&quot;</span><span class="pl-cce">\n</span><span class="pl-pds">&quot;</span></span>);
+	}
+}
+
+<span class="pl-c"><span class="pl-c">//</span>用点表示方法调用方法</span>
+<span class="pl-smi">otherFun</span>.<span class="pl-en">getName</span>(res);
+<span class="pl-smi">otherFun</span>.<span class="pl-en">getPlay</span>(res);
+
+
+<span class="pl-c"><span class="pl-c">//</span>用方括号的方法调用非法命名的函数</span>
+otherFun[<span class="pl-s"><span class="pl-pds">&quot;</span>get Name<span class="pl-pds">&quot;</span></span>](res);
+</pre>
+</div>
 </body>
 </html>

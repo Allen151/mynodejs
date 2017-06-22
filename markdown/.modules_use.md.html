@@ -753,6 +753,29 @@ function setDocumentScrollTop(ypos)
 <span class="pl-k">var</span> student <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Student</span>(<span class="pl-c1">1</span>, <span class="pl-s"><span class="pl-pds">&quot;</span>小明<span class="pl-pds">&quot;</span></span>, <span class="pl-c1">12</span>) ;
 <span class="pl-smi">student</span>.<span class="pl-en">enter</span>();
 <span class="pl-smi">student</span>.<span class="pl-en">study</span>(res);</pre>
+</div> 
+<h2> <a id="学习到的新代码" class="anchor" href="#%E5%AD%A6%E4%B9%A0%E5%88%B0%E7%9A%84%E6%96%B0%E4%BB%A3%E7%A0%81" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>学习到的新代码</h2> 
+<div class="highlight highlight-source-js">
+ <pre><span class="pl-c"><span class="pl-c">//</span>创建一个对象  </span>
+<span class="pl-k">function</span> <span class="pl-en">User</span>(<span class="pl-smi">id</span>, <span class="pl-smi">name</span>, <span class="pl-smi">age</span>){
+
+}
+<span class="pl-c"><span class="pl-c">//</span>实例化一个对象，调用对象里的方法</span>
+<span class="pl-k">var</span> user <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">User</span>(<span class="pl-c1">1</span>, <span class="pl-s"><span class="pl-pds">&quot;</span>Allen<span class="pl-pds">&quot;</span></span>, <span class="pl-c1">20</span>);
+<span class="pl-smi">user</span>.<span class="pl-en">enter</span>();
+
+<span class="pl-c"><span class="pl-c">//</span>继承一个父类，得到接口，实用上父类，自己的函数，抛出接口</span>
+<span class="pl-k">var</span> User <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">&quot;</span>./User<span class="pl-pds">&quot;</span></span>) ;
+<span class="pl-k">function</span> <span class="pl-en">Teacher</span>(<span class="pl-smi">id</span>, <span class="pl-smi">name</span>, <span class="pl-smi">age</span>){
+	<span class="pl-c"><span class="pl-c">//</span>将User应用进来，相当于java中的实现类的继承操作</span>
+	<span class="pl-smi">User</span>.<span class="pl-c1">apply</span>(<span class="pl-c1">this</span>, [id, name, age]);
+	<span class="pl-c1">this</span>.<span class="pl-en">teach</span> <span class="pl-k">=</span> <span class="pl-k">function</span>(<span class="pl-smi">res</span>){
+		<span class="pl-smi">res</span>.<span class="pl-c1">write</span>(<span class="pl-c1">this</span>.<span class="pl-c1">name</span><span class="pl-k">+</span><span class="pl-s"><span class="pl-pds">&quot;</span>在讲课<span class="pl-pds">&quot;</span></span>);
+	}
+}
+<span class="pl-c1">module</span>.<span class="pl-smi">exports</span> <span class="pl-k">=</span> Teacher ;<span class="pl-c"><span class="pl-c">//</span>抛出接口</span>
+<span class="pl-c"><span class="pl-c">//</span>使用继承类跟使用类一样，不多说。</span>
+</pre>
 </div>
 </body>
 </html>
